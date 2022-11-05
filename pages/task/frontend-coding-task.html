@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>frontend-coding-task.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="frontend-coding-challenge--aspectaai">Frontend Coding Challenge @ Aspecta.ai</h1>
+<p>Thank you for applying for the frontend developer position at Aspecta.ai. We will ask you to complete a coding challenge to show your expertise.</p>
+<p>You will have 3 days to complete several tasks. During the challenge period, if you have any questions, please contact jack@aspecta.ai.</p>
+<h2 id="task-description">Task description</h2>
+<ul>
+<li>
+<p>You will have the following resources:</p>
+<ol>
+<li>a design doc, including an input page and a skill card.</li>
+<li>an API call example.</li>
+</ol>
+</li>
+<li>
+<p>You are asked to complete the following coding tasks:</p>
+<ol>
+<li><strong>Frontend: Skill Card</strong>. Using the <code>skills</code>, <code>skill_set</code> information in the API return, you need to develop a webpage to display the skill card as shown in the design doc.</li>
+<li><strong>Frontend &amp; Backend: Input Page</strong>. Simulating the API call example, you need to develop an input page as the design doc shows. The input page accepts necessary inputs and calls the API.</li>
+<li><strong>Frontend &amp; Backend: Redirect</strong>. After the input page calls the API and gets a return, you need to redirect to the skill card page.</li>
+</ol>
+</li>
+</ul>
+<h2 id="task-requirements">Task requirements</h2>
+<ul>
+<li>
+<p><em>Implementation.</em></p>
+<ul>
+<li>You may use any frameworks, libraries, or languages you deem appropriate to build this project. However, using a modern web library or framework, such as React or Vue, is preferred, as it aligns best with our current development practices.</li>
+<li>We expect that the component will be designed for common desktop screens. Some screen sizes we are designing for: 1280*800, 1366*768, 1920*1080, etc.</li>
+<li>Out of scope for this project: accessibility (a11y), internationalization (i18n).</li>
+</ul>
+</li>
+<li>
+<p><em>Design match.</em></p>
+<ul>
+<li>Your implementation should be similar to the design.</li>
+<li>However, since we are providing an incomplete design doc, it's normal that some part of the design doc is hard to implement. You can skip those parts or choose your way to implement them.</li>
+</ul>
+</li>
+<li>
+<p><em>Time.</em></p>
+<ul>
+<li>This project should take no more than 12 hours of work, and should be completed within 3 days of receipt.</li>
+<li>In case you don't have time to finish all the tasks, please try to do the tasks in order, since they come from simple to hard.</li>
+</ul>
+</li>
+</ul>
+<h2 id="deliverables">Deliverables</h2>
+<ol>
+<li>A <strong>private</strong> GitHub code repo with all necessary files for us to run the code locally. Add jack@aspecta.ai as a member with admin access, so that we can review the code and also test it ourselves. <strong>Please do not post publicly.</strong></li>
+<li>In the repo, have a README file for documentation. Document the steps for us to install dependencies and launch the project. You can also include your high-level thought process for any important design/implementation decisions you have made.</li>
+<li>Try to use small commits, and keep commit messages informative.</li>
+</ol>
+<h2 id="task-resources">Task resources</h2>
+<h3 id="design-doc">Design doc</h3>
+<ul>
+<li>
+<p><em>Skill card</em>
+<img src="./skill-card.png" alt="Skill card"></p>
+</li>
+<li>
+<p><em>Input page</em>
+<img src="./input-page.png" alt="Input page"></p>
+</li>
+</ul>
+<h3 id="api-call">API call</h3>
+<ul>
+<li><em>Example API call</em></li>
+</ul>
+<pre class="hljs"><code><div>curl --header &quot;Content-Type: application/json&quot; \
+  --request POST \
+  --data-raw '{&quot;skill_names&quot;: [&quot;deep learning&quot;], &quot;candidates&quot;: [{&quot;identifier&quot;: &quot;&quot;, &quot;accounts&quot;: {&quot;github&quot;: &quot;yangji9181&quot;, &quot;stackoverflow&quot;: &quot;&quot;, &quot;linkedin&quot;: &quot;carlyang81&quot;, &quot;academic&quot;: &quot;2524788031&quot;}}], &quot;appid&quot;: &quot;bc17818b-d70e-4883-8148-74a2bea56674&quot;}' \
+  https://service.aspecta.ai/assess_candidates
+</div></code></pre>
+<ul>
+<li><em>Expected return</em></li>
+</ul>
+<pre class="hljs"><code><div>{
+    &quot;candidates&quot;: [
+        {
+            &quot;identifier&quot;: &quot;&quot;,
+            &quot;overall_score&quot;: 88.0,
+            &quot;skills&quot;: [
+                {
+                    &quot;name&quot;: &quot;computer vision&quot;,
+                    &quot;score&quot;: 86.43,
+                    &quot;average&quot;: 76.44,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;deep learning&quot;,
+                    &quot;score&quot;: 88.0,
+                    &quot;average&quot;: 77.34,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;,
+                        &quot;github&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;natural language processing&quot;,
+                    &quot;score&quot;: 88.39,
+                    &quot;average&quot;: 78.99,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;,
+                        &quot;github&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;neural network&quot;,
+                    &quot;score&quot;: 84.75,
+                    &quot;average&quot;: 76.41,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;,
+                        &quot;github&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;time series&quot;,
+                    &quot;score&quot;: 84.0,
+                    &quot;average&quot;: 79.05,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;reinforcement learning&quot;,
+                    &quot;score&quot;: 91.84,
+                    &quot;average&quot;: 77.83,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;adversarial robustness&quot;,
+                    &quot;score&quot;: 80.43,
+                    &quot;average&quot;: 78.36,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;data mining&quot;,
+                    &quot;score&quot;: 100.0,
+                    &quot;average&quot;: 76.47,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;graph learning&quot;,
+                    &quot;score&quot;: 100.0,
+                    &quot;average&quot;: 79.45,
+                    &quot;sources&quot;: [
+                        &quot;academic&quot;
+                    ]
+                }
+            ],
+            &quot;info&quot;: {
+                &quot;name&quot;: &quot;Carl Yang&quot;,
+                &quot;contact&quot;: null,
+                &quot;education_background&quot;: &quot;University of Illinois at Urbana-Champaign&quot;,
+                &quot;education_major&quot;: &quot;Computer Science&quot;,
+                &quot;education_degree&quot;: &quot;Ph.D.&quot;,
+                &quot;experience_level&quot;: &quot;Expert&quot;,
+                &quot;open_to_new_opportunity&quot;: null,
+                &quot;current_employer&quot;: &quot;Emory University&quot;,
+                &quot;location&quot;: &quot;Atlanta, Georgia, US&quot;,
+                &quot;occupation&quot;: &quot;Assistant Professor&quot;,
+                &quot;profile_picture&quot;: &quot;https://s3.us-west-000.backblazeb2.com/proxycurl/person/carlyang81/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=0004d7f56a0400b0000000001%2F20220428%2Fus-west-000%2Fs3%2Faws4_request&amp;X-Amz-Date=20220428T140613Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=01391c6b25fae1afc87aaf9c9107e842f2d84a2f45afb342eabb30c49a932def&quot;,
+                &quot;url&quot;: &quot;https://github.com/yangji9181&quot;
+            },
+            &quot;accounts&quot;: {
+                &quot;github&quot;: &quot;yangji9181&quot;,
+                &quot;academic&quot;: &quot;2524788031&quot;,
+                &quot;stackoverflow&quot;: &quot;&quot;,
+                &quot;linkedin&quot;: &quot;carlyang81&quot;
+            },
+            &quot;badges&quot;: []
+        }
+    ],
+    &quot;count&quot;: 1,
+    &quot;skill_set&quot;: {
+        &quot;deep learning&quot;: [
+            &quot;natural language processing&quot;,
+            &quot;neural network&quot;,
+            &quot;computer vision&quot;,
+            &quot;reinforcement learning&quot;,
+            &quot;data mining&quot;,
+            &quot;robotics&quot;,
+            &quot;attention mechanism&quot;,
+            &quot;graph learning&quot;,
+            &quot;adversarial robustness&quot;,
+            &quot;self-supervised learning&quot;,
+            &quot;unsupervised learning&quot;,
+            &quot;generative adversarial network&quot;,
+            &quot;time series&quot;
+        ]
+    },
+    &quot;remaining_quota&quot;: {
+        &quot;search&quot;: 0,
+        &quot;assessment&quot;: 98,
+        &quot;highlight&quot;: 100,
+        &quot;retrieval&quot;: 1000,
+        &quot;hc_search&quot;: 0,
+        &quot;hc_assessment&quot;: 49,
+        &quot;hc_highlight&quot;: 50,
+        &quot;hc_retrieval&quot;: 1000
+    }
+}
+</div></code></pre>
+
+</body>
+</html>
